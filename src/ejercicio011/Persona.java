@@ -22,6 +22,12 @@ public abstract class Persona {
 	}
 	
 	
+	/**
+	 * @param rut
+	 */
+	public Persona(String rut) {
+		this.rut = rut;
+	}
 	public String getRut() {
 		return rut;
 	}

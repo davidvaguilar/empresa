@@ -13,12 +13,12 @@ public class Empresa {
 	 * @param nombre
 	 * @param direccion
 	 * @param clientes
-	 * @param empleados
 	 */
-	public Empresa(String rol, String nombre, String direccion) {
+	public Empresa(String rol, String nombre, String direccion, ArrayList<Cliente> clientes) {
 		this.rol = rol;
 		this.nombre = nombre;
 		this.direccion = direccion;
+		this.clientes=clientes;
 		this.empleados = new ArrayList<Empleado>();
 	}
 
@@ -60,20 +60,20 @@ public class Empresa {
 	}
 	
 	public String imprimir(){
-		String listadoemp="";
-		String listadocli="";
-		for (int i = 0; i < empleados.size(); i++) {
-			listadoemp+="\n"+this.empleados.get(i).imprimir();
-			
-		}
-		for (int i = 0; i < clientes.size(); i++) {
-			listadocli+="\n"+this.clientes.get(i).imprimir();
-		}
-		return "La empresa con rol: "+this.rol+
+		String msj;
+		msj= "La empresa con rol: "+this.rol+
 				" y nombre: "+this.nombre+
-				" tiene la direccion: "+this.direccion+
-				"\n\t"+listadocli+
-				"\n\t"+listadoemp;
+				" tiene la direccion: "+this.direccion;
+		msj+="\nCon los siguientes Clientes: ";
+				for (Cliente cliente : clientes) {
+					msj+="\n\t"+cliente.imprimir();
+				}
+		msj+="\nCon los siguients Empleados: ";
+				for (int i = 0; i < this.empleados.size(); i++) {
+					msj+="\n\t"+this.empleados.get(i).imprimir();
+				}
+		return msj;	
+		
 	}
 	
 	
